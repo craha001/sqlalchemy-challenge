@@ -55,9 +55,9 @@ The following is a list of routes and their desired outcomes:
 @app.route("/api/v1.0/tobs") - Here the results of our station analysis can be found where the values for the most active station's temperatures for the one year of data calculated. 
 
 @app.route("/api/v1.0/<start>")
-@app.route("/api/v1.0/<start>/<end>") - For these two routes, the user of the app can find a list of minimum temperature, average temperature, and maximum temperature for a specified start or start-end range. 
+@app.route("/api/v1.0/<start>/<end>") - For these two routes, the user of the app can find the minimum temperature, average temperature, and maximum temperature for a specified start or start-end date range. 
 To use this api route an example would be: /api/v1.0/2016-08-23 or /api/v1.0/2016-08-23/2017-08-23.
 
 ## Code Source
-For this assignment the resources folder were provided by the institution. I worked on the code with the assistance of Nicolas Ortega and Brendan Golden. In terms of debugging and assistance on the code I used ChatGPT for the climate app section.
+For this assignment the resources folder were provided by the institution. I worked on the code with the assistance of Nicolas Ortega and Brendan Golden. In terms of debugging and assistance on the code I used ChatGPT.
 
