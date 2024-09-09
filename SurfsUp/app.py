@@ -46,9 +46,7 @@ def homepage():
     )
 
 
-# Convert the query results from your precipitation analysis
-# (i.e. retrieve only the last 12 months of data)
-# to a dictionary using date as the key and prcp as the value.
+# Convert the query results from your precipitation analysis (i.e. retrieve only the last 12 months of data)  to a dictionary using date as the key and prcp as the value.
 # Return the JSON representation of your dictionary.
 
 @app.route("/api/v1.0/precipitation")
@@ -77,7 +75,7 @@ def precipitation():
 @app.route("/api/v1.0/station")
 def station():
     session = Session(bind=engine)
-
+    #Return a JSON list of stations from the dataset.
     stations_list_names = session.query(
         measurement.station
     ).group_by(measurement.station).order_by(func.count(measurement.station).desc()).all()
@@ -92,6 +90,8 @@ def station():
 @app.route("/api/v1.0/tobs")
 def tobs():
     session = Session(bind=engine)
+    #Query the dates and temperature observations of the most-active station for the previous year of data.
+    #Return a JSON list of temperature observations for the previous year.
 
     most_active_station = session.query(
         measurement.station,
@@ -130,14 +130,14 @@ def temperature_range(start, end=None):
     session = Session(bind=engine)
 
     if end:
-        # If both start and end dates are provided
+        # If both start and end dates are provided, example:  /api/v1.0/2016-08-23/2016-10-23
         results = session.query(
             func.min(measurement.tobs),
             func.avg(measurement.tobs),
             func.max(measurement.tobs)
         ).filter(measurement.date >= start).filter(measurement.date <= end).all()
     else:
-        # If only the start date is provided
+        # If only the start date is provided example:  /api/v1.0/2016-08-23/
         results = session.query(
             func.min(measurement.tobs),
             func.avg(measurement.tobs),
@@ -149,9 +149,9 @@ def temperature_range(start, end=None):
 
     # Extract the result and structure the response
     temp_data = {
-        "TMIN": results[0][0],
-        "TAVG": results[0][1],
-        "TMAX": results[0][2]
+        "TMIN": results[0][0], #lowest temperate from specific day
+        "TAVG": results[0][1], #average temperature from specific day
+        "TMAX": results[0][2]  #highest temperature from specific day
     }
 
     return jsonify(temp_data)
