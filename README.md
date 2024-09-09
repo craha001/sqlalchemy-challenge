@@ -21,14 +21,7 @@ from sqlalchemy.orm import Session  (Imported to create a session where we can q
 from sqlalchemy import create_engine, func, inspect (Import used for engine creation, func is imported to perform calculations on the datasets, and inspect is imported to show what columns are found in each dataset)  
 
 ### Precipitation Analysis
-First will be precipitation analysis where we will cover data from the most recent date and trace it back a whole year. By performing a session.query command on the measurement.date column to find the most recent date in the dataset  
-we can begin performing the analysis. The graph that will be plotted is date in the x-axis and precipitation in inches for the y-axis. Once the most recent date is acquired, then we can transform this date into an integer using  
-datetime imported as dt, so the code looks like dt.datetime(yyyy,mm,day). With our recent date converted to an integer, we can simply subtract 366 days to cover the entire year we want to visualize and store it in it's own variable  
-as one_year. Finally a query was performed to obtain the dates and precipitation over the last year using our one_year variable as a parameter. Then convert this query into a dataframe using pandas, sort it based on dates in descending  
-order and plot the scatter plot using matplotlib plt.plot. After our visualization, a statistical summary was performed to find the counts, min, max, mean, standard deviation, 25% quantile, 50% quantile, and 75% quantile. 
-
-
-
+First will be precipitation analysis where we will cover data from the most recent date and trace it back a whole year. By performing a session.query command on the measurement.date column to find the most recent date in the dataset we can begin performing the analysis. The graph that will be plotted is date in the x-axis and precipitation in inches for the y-axis. Once the most recent date is acquired, then we can transform this date into an integer using datetime imported as dt, so the code looks like dt.datetime(yyyy,mm,day). With our recent date converted to an integer, we can simply subtract 366 days to cover the entire year we want to visualize and store it in it's own variable as one_year. Finally a query was performed to obtain the dates and precipitation over the last year using our one_year variable as a parameter. Then convert this query into a dataframe using pandas, sort it based on dates in descending order and plot the scatter plot using matplotlib plt.plot. After our visualization, a statistical summary was performed to find the counts, min, max, mean, standard deviation, 25% quantile, 50% quantile, and 75% quantile. 
 
 ### Station Analysis
 Second will be a station analysis where using Pandas and SQL alchemy we will find the most active station and create a histogram for temperature values and their frequency meaning how often said values were calculated. 
