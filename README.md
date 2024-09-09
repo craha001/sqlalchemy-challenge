@@ -14,7 +14,7 @@ import numpy as np  (Numpy is imported for calculations)
 import pandas as pd  
 import datetime as dt (Imported to convert dates into integers for calculation)  
 
-# Python SQL toolkit and Object Relational Mapper
+(Python SQL toolkit and Object Relational Mapper)
 import sqlalchemy  
 from sqlalchemy.ext.automap import automap_base (used to create variables for the datasets from SQL)  
 from sqlalchemy.orm import Session  (Imported to create a session where we can query into sql alchemy)  
